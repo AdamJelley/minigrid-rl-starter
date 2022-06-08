@@ -14,10 +14,10 @@ def create_folders_if_necessary(path):
         os.makedirs(dirname)
 
 
-def get_storage_dir():
+def get_storage_dir(storage_dir="storage"):
     if "RL_STORAGE" in os.environ:
         return os.environ["RL_STORAGE"]
-    return "storage"
+    return storage_dir
 
 
 def get_model_dir(model_name):
@@ -56,8 +56,8 @@ def get_txt_logger(model_dir):
         format="%(message)s",
         handlers=[
             logging.FileHandler(filename=path),
-            logging.StreamHandler(sys.stdout)
-        ]
+            logging.StreamHandler(sys.stdout),
+        ],
     )
 
     return logging.getLogger()

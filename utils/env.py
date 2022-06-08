@@ -9,5 +9,6 @@ def make_env(env_key, seed=None):
     # env = RGBImgPartialObsWrapper(env)  # Get pixel observations
     # env = ImgObsWrapper(env)  # Get rid of the 'mission' field
     # env = ActionBonus(env)
+    # env = StateBonus(env)
     env.seed(seed)
     return env
