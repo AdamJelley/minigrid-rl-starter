@@ -14,14 +14,18 @@ def create_folders_if_necessary(path):
         os.makedirs(dirname)
 
 
-def get_storage_dir(storage_dir="storage"):
+def get_storage_dir(storage_dir):
     if "RL_STORAGE" in os.environ:
         return os.environ["RL_STORAGE"]
+    elif storage_dir == None:
+        return "storage"
+    else:
+        return os.path.join(storage_dir, "storage")
     return storage_dir
 
 
-def get_model_dir(model_name):
-    return os.path.join(get_storage_dir(), model_name)
+def get_model_dir(model_name, storage_dir=None):
+    return os.path.join(get_storage_dir(storage_dir), model_name)
 
 
 def get_status_path(model_dir):

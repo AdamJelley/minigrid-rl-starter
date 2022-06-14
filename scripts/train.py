@@ -5,6 +5,7 @@ import torch_ac
 import tensorboardX
 import sys
 
+sys.path.append("/Users/ajelley/Projects/gen-con-rl/minigrid-rl-starter/")
 import utils
 from utils import device
 from model import ACModel
@@ -45,6 +46,12 @@ parser.add_argument(
     type=int,
     default=10**7,
     help="number of frames of training (default: 1e7)",
+)
+parser.add_argument(
+    "--storage_dir",
+    type=str,
+    default="minigrid-rl-starter",
+    help="Dir containing the storage dir",
 )
 
 ## Parameters for main algorithm
@@ -131,7 +138,7 @@ date = datetime.datetime.now().strftime("%y-%m-%d-%H-%M-%S")
 default_model_name = f"{args.env}_{args.algo}_seed{args.seed}_{date}"
 
 model_name = args.model or default_model_name
-model_dir = utils.get_model_dir(model_name)
+model_dir = utils.get_model_dir(model_name, args.storage_dir)
 
 # Load loggers and Tensorboard writer
 

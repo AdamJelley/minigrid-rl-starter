@@ -49,6 +49,12 @@ parser.add_argument(
 parser.add_argument(
     "--text", action="store_true", default=False, help="add a GRU to the model"
 )
+parser.add_argument(
+    "--storage_dir",
+    type=str,
+    default="minigrid-rl-starter",
+    help="Dir containing the storage dir",
+)
 
 args = parser.parse_args()
 
@@ -69,7 +75,7 @@ print("Environment loaded\n")
 
 # Load agent
 
-model_dir = utils.get_model_dir(args.model)
+model_dir = utils.get_model_dir(args.model, args.storage_dir)
 agent = utils.Agent(
     env.observation_space,
     env.action_space,
@@ -100,7 +106,7 @@ for episode in range(args.episodes):
 
         action = agent.get_action(obs)
         obs, reward, done, _ = env.step(action)
-        print(action)
+
         # print(env.agent_pos, env.agent_dir)
         # if episode == 0:
         #     numpy.save("test.npz", obs["image"])
