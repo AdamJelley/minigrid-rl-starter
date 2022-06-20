@@ -3,8 +3,8 @@ import time
 import torch
 from torch_ac.utils.penv import ParallelEnv
 
-import utils
-from utils import device
+import minigrid_rl_starter.utils as utils
+from minigrid_rl_starter.utils import device
 
 
 # Parse arguments

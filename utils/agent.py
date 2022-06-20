@@ -1,8 +1,8 @@
 import torch
 
-import utils
+import minigrid_rl_starter.utils as utils
 from .other import device
-from model import ACModel
+from minigrid_rl_starter.model import ACModel
 
 
 class Agent:

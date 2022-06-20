@@ -5,10 +5,9 @@ import torch_ac
 import tensorboardX
 import sys
 
-sys.path.append("/Users/ajelley/Projects/gen-con-rl/minigrid-rl-starter/")
-import utils
-from utils import device
-from model import ACModel
+import minigrid_rl_starter.utils as utils
+from minigrid_rl_starter.utils import device
+from minigrid_rl_starter.model import ACModel
 
 
 # Parse arguments
@@ -50,7 +49,7 @@ parser.add_argument(
 parser.add_argument(
     "--storage_dir",
     type=str,
-    default="minigrid-rl-starter",
+    default="minigrid_rl_starter",
     help="Dir containing the storage dir",
 )
 

@@ -4,7 +4,7 @@ import torch
 import logging
 import sys
 
-import utils
+import minigrid_rl_starter.utils as utils
 from .other import device
 
 

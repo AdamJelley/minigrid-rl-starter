@@ -4,9 +4,8 @@ import numpy
 
 import sys
 
-sys.path.append("/Users/ajelley/Projects/gen-con-rl/minigrid-rl-starter/")
-import utils
-from utils import device
+import minigrid_rl_starter.utils as utils
+from minigrid_rl_starter.utils import device
 import matplotlib.pyplot as plt
 
 # Parse arguments
@@ -52,7 +51,7 @@ parser.add_argument(
 parser.add_argument(
     "--storage_dir",
     type=str,
-    default="minigrid-rl-starter",
+    default="minigrid_rl_starter",
     help="Dir containing the storage dir",
 )
 
@@ -107,6 +106,12 @@ for episode in range(args.episodes):
         action = agent.get_action(obs)
         obs, reward, done, _ = env.step(action)
 
+        # new_obs["image"][env.agent_pos[0], env.agent_pos[1], 2] = 0
+        # if numpy.allclose(new_obs["image"], obs["image"]):
+        #     print("Ivariant")
+        # else:
+        #     print("rotated")
+        # print(obs["image"], env.agent_pos)
         # print(env.agent_pos, env.agent_dir)
         # if episode == 0:
         #     numpy.save("test.npz", obs["image"])
