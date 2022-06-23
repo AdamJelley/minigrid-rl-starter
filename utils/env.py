@@ -10,5 +10,6 @@ def make_env(env_key, seed=None):
     # env = ImgObsWrapper(env)  # Get rid of the 'mission' field
     # env = ActionBonus(env)
     # env = StateBonus(env)
+    env = NavigationActionWrapper(env)
     env.seed(seed)
     return env
