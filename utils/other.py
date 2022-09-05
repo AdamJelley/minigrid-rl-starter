@@ -10,12 +10,17 @@ import GPUtil
 if torch.cuda.is_available():
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
     deviceID = GPUtil.getFirstAvailable(
-        order="load", maxLoad=0.4, maxMemory=0.4, attempts=1, interval=900, verbose=False
+        order="load",
+        maxLoad=0.4,
+        maxMemory=0.4,
+        attempts=1,
+        interval=900,
+        verbose=False,
     )[0]
     os.environ["CUDA_VISIBLE_DEVICES"] = str(deviceID)
     device = torch.device(f"cuda:{deviceID}")
-elif torch.has_mps:
-    device = torch.device("mps")
+# elif torch.has_mps:
+#     device = torch.device("mps")
 else:
     device = torch.device("cpu")
 
